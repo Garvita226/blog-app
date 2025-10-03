@@ -6,5 +6,7 @@ import LogoutBtn from './Header/LogoutBtn.jsx'
 import Input from './Input.jsx'
 import Select from './Select.jsx'
 import Button from './Button.jsx'
+import Login from './Login.jsx'
+import Signup from './Signup.jsx'
 
-export {Header, Footer, Logo, Container, LogoutBtn, Input, Select, Button}
+export {Header, Footer, Logo, Container, LogoutBtn, Input, Select, Button, Login, Signup}
