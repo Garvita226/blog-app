@@ -8,5 +8,6 @@ import Select from './Select.jsx'
 import Button from './Button.jsx'
 import Login from './Login.jsx'
 import Signup from './Signup.jsx'
+import RTE from './RTE.jsx'
 
-export {Header, Footer, Logo, Container, LogoutBtn, Input, Select, Button, Login, Signup}
+export {Header, Footer, Logo, Container, LogoutBtn, Input, Select, Button, Login, Signup, RTE}
