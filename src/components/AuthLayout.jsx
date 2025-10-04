@@ -11,7 +11,7 @@ const AuthLayout = ({ children, authentication = true }) => {
 
         if (authentication && authStatus !== authentication) {
             navigate('/login')
-        } else if (authentication && authStatus) {
+        } else if (!authentication && authStatus !== authentication) {
             navigate('/')
         }
 
