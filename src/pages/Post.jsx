@@ -9,7 +9,7 @@ import parse from 'html-react-parser'
 const Post = () => {
     const [post, setPost] = useState(null)
     const navigate = useNavigate()
-    const slug = useParams()
+    const {slug} = useParams()
 
     const userData = useSelector(store => store.auth.userData)
 

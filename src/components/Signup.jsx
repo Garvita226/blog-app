@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Input, Button, Logo } from './index.js'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { login as storeLogin } from '../store/authSlice.js'
 import authService from '../appwrite/auth.js'
@@ -20,6 +20,7 @@ const Signup = () => {
 
             if (userData) {
                 const userData = await authService.getCurrentUser()
+                console.log(userData)
                 if (userData) dispatch(storeLogin(userData))
                 navigate('/')
             }

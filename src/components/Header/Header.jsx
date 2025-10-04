@@ -39,21 +39,21 @@ const Header = () => {
   return (
     <header>
       <Container>
-        <nav className='flex'>
+        <nav className='flex items-center'>
           <div className='mr-4'>
             <Link to='./'>
               <Logo width='70px' />
             </Link>
           </div>
-          <ul>
-            { navItems.map(item => 
+          <ul className='flex'>
+            {navItems.map(item =>
               item.active ? (
                 <li key={item.name}
-                onClick={() => navigate(item.slug)}
-                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' >{item.name}</li>
+                  onClick={() => navigate(item.slug)}
+                  className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full cursor-pointer' >{item.name}</li>
               ) : null
-            ) }
-            { authStatus ?? (
+            )}
+            {authStatus && (
               <li> <LogoutBtn /> </li>
             )}
           </ul>

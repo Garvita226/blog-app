@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import service from '../appwrite/config'
 import {Container, PostCard} from '../components'
+import conf from '../conf/conf'
 
 const Home = () => {
     const [posts, setPosts] = useState([])
@@ -8,7 +9,7 @@ const Home = () => {
     useEffect(() => {
         service.getPosts()
             .then(posts => {
-                if (posts) setPosts(posts)
+                if (posts) setPosts(posts.rows)
             })
     }, [])
 

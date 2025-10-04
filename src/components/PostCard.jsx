@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router'
 import service from '../appwrite/config'
 
 const Postcard = ({$id, title, featuredImage}) => {

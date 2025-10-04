@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import service from '../../appwrite/config'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { RTE, Button, Input, Select } from '../index.js'
 
@@ -17,18 +17,6 @@ const PostForm = ({ post }) => {
 
     const navigate = useNavigate()
     const userData = useSelector(store => store.auth.userData)
-
-    useEffect(() => {
-        const subscription = watch((value, { name }) => {
-            if (name === 'title') {
-                setValue('slug', slugTransform(value.title), {
-                    shouldValidate: true
-                })
-            }
-        })
-
-        return subscription.unsubscribe()
-    }, [])
 
     const submit = async (data) => {
         if (post) {
@@ -67,11 +55,23 @@ const PostForm = ({ post }) => {
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === 'string') {
-            return value.trim().toLowerCase().replace(/^[a-zA-Z\d]+/g, '-')
+            return value.trim().toLowerCase().replace(/[^a-zA-Z\d]+/g, '-')
         }
-
+        
         return ''
     }, [])
+
+    useEffect(() => {
+        const subscription = watch((value, { name }) => {
+            if (name === 'title') {
+                setValue('slug', slugTransform(value.title), {
+                    shouldValidate: true
+                })
+            }
+        })
+
+        return () => subscription.unsubscribe()
+    }, [watch, slugTransform, setValue])
 
     return (
         <form onSubmit={handleSubmit(submit)} className='flex flex-wrap'>

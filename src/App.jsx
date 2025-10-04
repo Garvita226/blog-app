@@ -4,6 +4,7 @@ import authService from './appwrite/auth'
 import {useDispatch} from 'react-redux'
 import {login, logout} from './store/authSlice.js'
 import {Header, Footer} from './components/index.js'
+import { Outlet } from 'react-router'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -26,6 +27,7 @@ function App() {
     <div>
       <div>
         <Header />
+        <Outlet />
         <Footer />
       </div>
     </div>

@@ -62,7 +62,7 @@ class Service {
         try {
             return await this.tablesDB.getRow({
                 databaseId: conf.appwriteDatabaseId,
-                tableId: appwriteTableId,
+                tableId: conf.appwriteTableId,
                 rowId: slug
             })
         } catch (error) {
@@ -114,10 +114,11 @@ class Service {
 
     getFilePreview (fileId) {
         try {
-            return this.storage.getFilePreview({
+            return this.storage.getFileView({
                 bucketId: conf.appwriteBucketId,
                 fileId
             })
+
         } catch (error) {
             console.log(error)
             return false
